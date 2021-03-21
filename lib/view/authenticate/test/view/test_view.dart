@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttermvvmtemplate/core/extensions/context_extension.dart';
 
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
@@ -41,6 +42,7 @@ class _TestsViewState extends BaseState<TestsView> {
       leading: Text(
         LocaleManager.instance.getStringValue(LocalePreferencesKeys.TOKEN),
       ),
+      centerTitle: true,
       title: textWelcomeWidget(),
       actions: [
         iconButtonChangeTheme(),
@@ -52,7 +54,11 @@ class _TestsViewState extends BaseState<TestsView> {
     return IconButton(
       icon: Icon(Icons.change_history),
       onPressed: () {
-        context.locale = LanguageManager.instance.enLocale;
+        if (context.locale == LanguageManager.instance.enLocale) {
+          context.locale = LanguageManager.instance.trLocale;
+        } else {
+          context.locale = LanguageManager.instance.enLocale;
+        }
       },
     );
   }
@@ -60,20 +66,20 @@ class _TestsViewState extends BaseState<TestsView> {
   Text textWelcomeWidget() => Text(LocaleKeys.welcome.locale);
 
   Widget get textNumber {
-    return Column(
-      children: [
-        Observer(
-          builder: (context) => Text(
-            viewModel.number.toString(),
-          ),
+    return Center(
+      child: Observer(
+        builder: (context) => Text(
+          viewModel.number.toString(),
+          style: context.textTheme.subtitle1.copyWith(fontSize: context.highValue),
         ),
-      ],
+      ),
     );
   }
 
   FloatingActionButton get floatingActionButtonNumberIncrement {
     return FloatingActionButton(
       onPressed: () => viewModel.incrementNumber(),
+      child: Icon(Icons.add, size: context.mediumValue),
     );
   }
 }
