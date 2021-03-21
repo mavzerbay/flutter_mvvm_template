@@ -19,7 +19,7 @@ class TestsView extends StatefulWidget {
 class _TestsViewState extends BaseState<TestsView> {
   TestViewModel viewModel;
   @override
-  Widget build(BuildContext context) {           
+  Widget build(BuildContext context) {
     return BaseView<TestViewModel>(
       viewModel: TestViewModel(),
       onModelReady: (model) {
@@ -31,25 +31,43 @@ class _TestsViewState extends BaseState<TestsView> {
   }
 
   Widget get scaffoldBody => Scaffold(
-        appBar: AppBar(
-          leading: Text(
-            LocaleManager.instance.getStringValue(LocalePreferencesKeys.TOKEN),
-          ),
-          title: Text(LocaleKeys.welcome.locale),
-          actions: [
-            iconButtonChangeTheme(),
-          ],
-        ),
+        appBar: appBar(),
         floatingActionButton: floatingActionButtonNumberIncrement,
         body: textNumber,
       );
 
+  AppBar appBar() {
+    return AppBar(
+      leading: Text(
+        LocaleManager.instance.getStringValue(LocalePreferencesKeys.TOKEN),
+      ),
+      title: textWelcomeWidget(),
+      actions: [
+        iconButtonChangeTheme(),
+      ],
+    );
+  }
+
   IconButton iconButtonChangeTheme() {
     return IconButton(
       icon: Icon(Icons.change_history),
-      onPressed: ()  {
-          context.locale = LanguageManager.instance.enLocale;
+      onPressed: () {
+        context.locale = LanguageManager.instance.enLocale;
       },
+    );
+  }
+
+  Text textWelcomeWidget() => Text(LocaleKeys.welcome.locale);
+
+  Widget get textNumber {
+    return Column(
+      children: [
+        Observer(
+          builder: (context) => Text(
+            viewModel.number.toString(),
+          ),
+        ),
+      ],
     );
   }
 
@@ -58,12 +76,10 @@ class _TestsViewState extends BaseState<TestsView> {
       onPressed: () => viewModel.incrementNumber(),
     );
   }
+}
 
-  Widget get textNumber {
-    return Observer(
-      builder: (context) => Text(
-        viewModel.number.toString(),
-      ),
-    );
-  }
+extension _FormArea on _TestsViewState {
+  TextFormField get mailField => TextFormField(
+        validator: (value) => value.isValidEmail,
+      );
 }
