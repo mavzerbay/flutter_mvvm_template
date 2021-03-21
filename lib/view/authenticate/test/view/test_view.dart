@@ -19,10 +19,11 @@ class TestsView extends StatefulWidget {
 class _TestsViewState extends BaseState<TestsView> {
   TestViewModel viewModel;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {           
     return BaseView<TestViewModel>(
       viewModel: TestViewModel(),
       onModelReady: (model) {
+        model.setContext(context);
         viewModel = model;
       },
       onPageBuilder: (context, value) => scaffoldBody,
@@ -46,8 +47,8 @@ class _TestsViewState extends BaseState<TestsView> {
   IconButton iconButtonChangeTheme() {
     return IconButton(
       icon: Icon(Icons.change_history),
-      onPressed: () async {
-        await context.setLocale(LanguageManager.instance.enLocale);
+      onPressed: ()  {
+          context.locale = LanguageManager.instance.enLocale;
       },
     );
   }

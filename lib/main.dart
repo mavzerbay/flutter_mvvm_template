@@ -12,18 +12,12 @@ import 'core/init/notifier/theme_notifier.dart';
 import 'view/authenticate/test/view/test_view.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   LocaleManager.preferencesInit();
-
-  runApp(
-    MultiProvider(
-      providers: [...ApplicationProvider.instance.dependItems],
-      child: EasyLocalization(
-        child: MyApp(),
-        supportedLocales: LanguageManager.instance.supportedLocales,
-        path: ApplicationConstants.LANG_ASSET_PATH,
-      ),
-    ),
-  );
+  runApp(MultiProvider(
+    providers: [...ApplicationProvider.instance.dependItems],
+    child: EasyLocalization(child: MyApp(), supportedLocales: LanguageManager.instance.supportedLocales, path: ApplicationConstants.LANG_ASSET_PATH),
+  ));
 }
 
 class MyApp extends StatelessWidget {
