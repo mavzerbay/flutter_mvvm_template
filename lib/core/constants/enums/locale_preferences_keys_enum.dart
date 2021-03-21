@@ -1,0 +1,1 @@
+enum LocalePreferencesKeys { TOKEN }

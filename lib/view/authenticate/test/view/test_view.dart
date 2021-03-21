@@ -4,7 +4,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
+import '../../../../core/constants/enums/locale_preferences_keys_enum.dart';
 import '../../../../core/extensions/string_extension.dart';
+import '../../../../core/init/cache/locale_manager.dart';
 import '../../../../core/init/lang/language_manager.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../viewmodel/test_view_model.dart';
@@ -29,6 +31,9 @@ class _TestsViewState extends BaseState<TestsView> {
 
   Widget get scaffoldBody => Scaffold(
         appBar: AppBar(
+          leading: Text(
+            LocaleManager.instance.getStringValue(LocalePreferencesKeys.TOKEN),
+          ),
           title: Text(LocaleKeys.welcome.locale),
           actions: [
             iconButtonChangeTheme(),
