@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/core/base/view/base_view.dart';
-import 'package:fluttermvvmtemplate/core/extensions/context_extension.dart';
-import 'package:fluttermvvmtemplate/view/authenticate/login/viewmodel/login_view_model.dart';
+
+import '../../../../core/base/view/base_view.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
   @override
@@ -35,7 +36,7 @@ class LoginView extends StatelessWidget {
   Text buildText(BuildContext context) {
     return Text(
       "Hello",
-      style: context.textTheme.subtitle1,
+      style: context.textTheme.headline1.copyWith(color:context.theme.primaryColor),
     );
   }
 }

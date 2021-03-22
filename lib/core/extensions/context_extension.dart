@@ -20,6 +20,8 @@ extension ThemeExtension on BuildContext {
   TextTheme get textTheme => theme.textTheme;
 
   ColorScheme get colors => theme.colorScheme;
+
+  ColorScheme get buttonColors =>theme.buttonTheme.colorScheme;
 }
 
 extension PaddingExtension on BuildContext {
