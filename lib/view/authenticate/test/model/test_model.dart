@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../../core/base/model/base_model.dart';
+import '../../../../core/base/model/abstracts/base_model.dart';
 
 part 'test_model.g.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:fluttermvvmtemplate/core/base/model/base_view_model.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/base/model/abstracts/base_view_model.dart';
 import '../../../../core/constants/enums/app_theme_enum.dart';
-import '../../../../core/init/network/network_manager.dart';
+import '../../../../core/constants/enums/http_request_enum.dart';
 import '../../../../core/init/notifier/theme_notifier.dart';
 import '../model/test_model.dart';
 
@@ -37,9 +37,11 @@ abstract class _TestViewModelBase with Store, BaseViewModel {
   @action
   Future<void> getSampleRequest() async {
     isLoading = true;
-    final list = await NetworkManager.instance.dioGet<TestModel>("x", TestModel());
-    if (list is List) {
+    final response = await coreDio.fetch<List<TestModel>, TestModel>("path", method: HttpTypes.GET, parseModel: TestModel());
+    if (response.data is List<TestModel>) {
       //print true
+    }else{
+      //response.error;
     }
     isLoading = false;
   }
