@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../_widgets/button/login_button.dart';
 import '../viewmodel/login_view_model.dart';
+import 'face_book_button.dart';
 
 class LoginView extends StatelessWidget {
   @override
@@ -17,18 +19,31 @@ class LoginView extends StatelessWidget {
   }
 
   Scaffold buildScaffold(BuildContext context) => Scaffold(
-        body: ListView(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              padding: context.paddingLow,
-              height: context.height * .4,
-              color: context.colors.background,
-              child: buildText(context),
+            TextField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(),
+              ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: context.lowValue),
-              child: Placeholder(),
-            )
+            MavLoginButton(
+              onComplete: (data) {
+                print(data);
+              },
+            ),
+            FaceBookButton(
+              onComplete: (data, {errorMessage}) {
+                if (data != null) {
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(errorMessage),
+                    ),
+                  );
+                }
+              },
+            ),
           ],
         ),
       );
@@ -36,7 +51,7 @@ class LoginView extends StatelessWidget {
   Text buildText(BuildContext context) {
     return Text(
       "Hello",
-      style: context.textTheme.headline1.copyWith(color:context.theme.primaryColor),
+      style: context.textTheme.headline1.copyWith(color: context.theme.primaryColor),
     );
   }
 }
