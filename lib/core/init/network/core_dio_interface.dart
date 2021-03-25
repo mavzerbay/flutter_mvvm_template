@@ -10,7 +10,7 @@ abstract class ICoreDio {
     @required HttpTypes method,
     @required T parseModel,
     dynamic data,
-    Map<String, dynamic> queryParameters,
+    Map<String, Object> queryParameters,
     //CancelToken cancelToken,
     //Options options,
     //void Function(int, int) onSendProgress,

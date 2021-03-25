@@ -20,7 +20,6 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
   CoreDio(this.options) {
     this.options = options;
     this.interceptors.add(InterceptorsWrapper());
-
     this.httpClientAdapter = DefaultHttpClientAdapter();
   }
 
@@ -36,7 +35,7 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
 
     switch (response.statusCode) {
       case HttpStatus.ok:
-        final model = _responseParser<R>(parseModel, _responseParser);
+        final model = _responseParser<R,T>(parseModel, response.data);
         return ResponseModel<R>(data: model);
       default:
         return ResponseModel<R>(error: BaseError("error message"));
