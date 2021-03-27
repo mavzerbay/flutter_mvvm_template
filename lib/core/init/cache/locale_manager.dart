@@ -32,4 +32,5 @@ class LocaleManager {
   String getStringValue(LocalePreferencesKeys key) => _preferences.getString(key.toString()) ?? '';
 
   bool getBoolValue(LocalePreferencesKeys key) => _preferences.getBool(key.toString()) ?? false;
+  
 }

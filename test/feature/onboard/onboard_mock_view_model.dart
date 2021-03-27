@@ -44,24 +44,22 @@ class OnBoardMockViewModel implements OnBoardViewModel {
     currentPageIndex = value;
   }
 
-  Future<void> onBoardGetModels() async {
-    final response = await coreDio.fetch<List<PostModel>, PostModel>("/posts", method: HttpTypes.GET, parseModel: PostModel());
+  // Future<void> onBoardGetModels() async {
+  //   final response = await coreDio.fetch<List<PostModel>, PostModel>("/posts", method: HttpTypes.GET, parseModel: PostModel());
 
-    if (response.data is List) {
-      onBoardModel = response.data.map((e) => OnBoardModel(stringHelper.toUpper(e.title))).toList().cast<OnBoardModel>();
-    }
-  }
+  //   if (response.data is List) {
+  //     onBoardModel = response.data.map((e) => OnBoardModel(stringHelper.toUpper(e.title))).toList().cast<OnBoardModel>();
+  //   }
+  // }
 
-  Future<void> getServiceRequest() async {
-    isLoading = true;
-    await onBoardGetModels();
-    isLoading = false;
-  }
+  // Future<void> getServiceRequest() async {
+  //   isLoading = true;
+  //   await onBoardGetModels();
+  //   isLoading = false;
+  // }
 
   @override
-  void setContext(BuildContext context) {
-    // TODO: implement setContext
-  }
+  void setContext(BuildContext context) {}
 }
 
 abstract class IStringHelper {

@@ -19,33 +19,33 @@ main() {
     expect(text, text.toUpperCase());
   });
 
-  test('OnBoard Get Models', () async {
-    await mockViewModel.onBoardGetModels();
-    expect(mockViewModel.onBoardModel, isNotEmpty);
-  });
+  // test('OnBoard Get Models', () async {
+  //   await mockViewModel.onBoardGetModels();
+  //   expect(mockViewModel.onBoardModel, isNotEmpty);
+  // });
 
-  test('OnBoard Get Service Request', () {
-    expect(mockViewModel.isLoading, false);
-    mockViewModel.getServiceRequest();
-    expect(mockViewModel.isLoading, true);
-  });
+  // test('OnBoard Get Service Request', () {
+  //   expect(mockViewModel.isLoading, false);
+  //   mockViewModel.getServiceRequest();
+  //   expect(mockViewModel.isLoading, true);
+  // });
 
-  test('OnBoard On Page Changed', () {
-    mockViewModel.onPageChanged(5);
-    expect(mockViewModel.currentPageIndex, 5);
-  });
+  // test('OnBoard On Page Changed', () {
+  //   mockViewModel.onPageChanged(5);
+  //   expect(mockViewModel.currentPageIndex, 5);
+  // });
 
-  group("Test All", () {
-    int onBoardLength = 0;
-    test('OnBoard Get Models', () async {
-      await mockViewModel.onBoardGetModels();
-      onBoardLength = mockViewModel.onBoardModel.length;
-      expect(mockViewModel.onBoardModel, isNotEmpty);
-    });
+  // group("Test All", () {
+  //   int onBoardLength = 0;
+  //   test('OnBoard Get Models', () async {
+  //     await mockViewModel.onBoardGetModels();
+  //     onBoardLength = mockViewModel.onBoardModel.length;
+  //     expect(mockViewModel.onBoardModel, isNotEmpty);
+  //   });
 
-    test('OnBoard On Page Changed', () {
-      mockViewModel.onPageChanged(onBoardLength);
-      expect(mockViewModel.currentPageIndex, onBoardLength);
-    });
-  });
+  //   test('OnBoard On Page Changed', () {
+  //     mockViewModel.onPageChanged(onBoardLength);
+  //     expect(mockViewModel.currentPageIndex, onBoardLength);
+  //   });
+  // });
 }

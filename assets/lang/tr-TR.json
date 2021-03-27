@@ -1,3 +1,17 @@
 {
-    "welcome":"Hoşgeldiniz"
+    "welcome": "Hoşgeldiniz",
+    "onBoard": {
+        "page1": {
+            "title": "Bir Fikrimiz var",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
+        },
+        "page2": {
+            "title": "Önce Hava Alalım",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
+        },
+        "page3": {
+            "title": "Uygulamamıza Bakın",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
+        }
+    }
 }

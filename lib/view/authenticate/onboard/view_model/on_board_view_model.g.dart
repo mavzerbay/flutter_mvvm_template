@@ -25,15 +25,41 @@ mixin _$OnBoardViewModel on _OnBoardViewModelBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_OnBoardViewModelBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$_OnBoardViewModelBaseActionController =
       ActionController(name: '_OnBoardViewModelBase');
 
   @override
-  void onPageChanged(int value) {
+  void onPageChanged(int index) {
     final _$actionInfo = _$_OnBoardViewModelBaseActionController.startAction(
         name: '_OnBoardViewModelBase.onPageChanged');
     try {
-      return super.onPageChanged(value);
+      return super.onPageChanged(index);
+    } finally {
+      _$_OnBoardViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeLoading() {
+    final _$actionInfo = _$_OnBoardViewModelBaseActionController.startAction(
+        name: '_OnBoardViewModelBase.changeLoading');
+    try {
+      return super.changeLoading();
     } finally {
       _$_OnBoardViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -42,7 +68,8 @@ mixin _$OnBoardViewModel on _OnBoardViewModelBase, Store {
   @override
   String toString() {
     return '''
-currentPageIndex: ${currentPageIndex}
+currentPageIndex: ${currentPageIndex},
+isLoading: ${isLoading}
     ''';
   }
 }

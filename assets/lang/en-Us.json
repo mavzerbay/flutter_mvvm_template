@@ -1,3 +1,17 @@
 {
-    "welcome":"Welcome to My App"
+    "welcome":"Welcome to My App",
+    "onBoard": {
+        "page1": {
+            "title": "We have an Idea",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
+        },
+        "page2": {
+            "title": "Let's Air First",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
+        },
+        "page3": {
+            "title": "See Our Application",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
+        }
+    }
 }
