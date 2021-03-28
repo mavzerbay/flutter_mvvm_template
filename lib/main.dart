@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
+import 'core/constants/enums/locale_preferences_keys_enum.dart';
 import 'core/init/cache/locale_manager.dart';
 import 'core/init/lang/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifier.dart';
+import 'view/authenticate/login/view/login_view.dart';
 import 'view/authenticate/onboard/view/on_board_view.dart';
 
 void main() async {
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: OnBoardView(),
+      home: LocaleManager.instance.getBoolValue(LocalePreferencesKeys.IS_FIRST_APP) ? OnBoardView() : LoginView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

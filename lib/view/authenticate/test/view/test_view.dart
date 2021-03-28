@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:fluttermvvmtemplate/core/extensions/context_extension.dart';
 
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/enums/locale_preferences_keys_enum.dart';
+import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/extensions/string_extension.dart';
 import '../../../../core/init/cache/locale_manager.dart';
 import '../../../../core/init/lang/language_manager.dart';
@@ -84,8 +84,8 @@ class _TestsViewState extends BaseState<TestsView> {
   }
 }
 
-extension _FormArea on _TestsViewState {
-  TextFormField get mailField => TextFormField(
-        validator: (value) => value.isValidEmail,
-      );
-}
+// extension _FormArea on _TestsViewState {
+//   TextFormField get mailField => TextFormField(
+//         validator: (value) => value.isValidEmail,
+//       );
+// }

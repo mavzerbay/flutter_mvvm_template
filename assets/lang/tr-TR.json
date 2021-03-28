@@ -13,5 +13,15 @@
             "title": "Uygulamamıza Bakın",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
         }
+    },
+    "login": {
+        "login": "Giriş Yap",
+        "register": "Kayıt Ol",
+        "email": "E-posta",
+        "password": "Parola",
+        "forgot_your_password": "Şifrenizi mi unuttunuz?",
+        "you_dont_have_account": "Hesabınız yok mu? ",
+        "password_required": "Parola alanı zorunludur!",
+        "email_required": "Geçersiz email !"
     }
 }

@@ -31,14 +31,19 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
     Map<String, dynamic> queryParameters,
     void Function(int, int) onReceiveProgress,
   }) async {
-    final response = await request(path, data: data, queryParameters: queryParameters, options: Options(method: method.rawValue));
+    try {
+      final response = await request(path, data: data, queryParameters: queryParameters, options: Options(method: method.rawValue));
 
-    switch (response.statusCode) {
-      case HttpStatus.ok:
-        final model = _responseParser<R,T>(parseModel, response.data);
-        return ResponseModel<R>(data: model);
-      default:
-        return ResponseModel<R>(error: BaseError("error message"));
+      switch (response.statusCode) {
+        case HttpStatus.ok:
+          final model = _responseParser<R, T>(parseModel, response.data);
+          return ResponseModel<R>(data: model);
+        default:
+          return ResponseModel<R>(error: BaseError("error message"));
+      }
+    } catch (e) {
+      print(e.toString());
+      return ResponseModel<R>(error: BaseError(e.toString()));
     }
   }
 }

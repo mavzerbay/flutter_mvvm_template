@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:fluttermvvmtemplate/core/constants/enums/http_request_enum.dart';
 import 'package:fluttermvvmtemplate/core/init/network/core_dio.dart';
+import 'package:fluttermvvmtemplate/core/init/network/vexana_manager.dart';
 import 'package:fluttermvvmtemplate/view/authenticate/onboard/model/on_board_model.dart';
 import 'package:fluttermvvmtemplate/core/init/network/core_dio_interface.dart';
 import 'package:fluttermvvmtemplate/core/init/navigation/navigation_service.dart';
@@ -8,7 +8,6 @@ import 'package:fluttermvvmtemplate/core/init/cache/locale_manager.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttermvvmtemplate/view/authenticate/onboard/view_model/on_board_view_model.dart';
 
-import '../../core/network/dio_mock_model.dart';
 
 class OnBoardMockViewModel implements OnBoardViewModel {
   @override
@@ -60,6 +59,18 @@ class OnBoardMockViewModel implements OnBoardViewModel {
 
   @override
   void setContext(BuildContext context) {}
+
+  @override
+  void changeLoading() {}
+
+  @override
+  // ignore: missing_return
+  Future<void> completeToOnBoard() {
+   // throw UnimplementedError();
+  }
+
+  @override
+  VexanaManager vexanaManager;
 }
 
 abstract class IStringHelper {

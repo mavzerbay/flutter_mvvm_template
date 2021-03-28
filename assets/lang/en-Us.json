@@ -1,5 +1,5 @@
 {
-    "welcome":"Welcome to My App",
+    "welcome": "Welcome to My App",
     "onBoard": {
         "page1": {
             "title": "We have an Idea",
@@ -13,5 +13,15 @@
             "title": "See Our Application",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ligula mi. Etiam ac tempor metus."
         }
+    },
+    "login": {
+        "login": "Login",
+        "register": "Sign Up",
+        "email": "E-mail",
+        "password": "Password",
+        "forgot_your_password": "Forgot your password?",
+        "you_dont_have_account": "Don't have an account? ",
+        "password_required": "Password is required!",
+        "email_required": "Invalid e-mail address!"
     }
 }
