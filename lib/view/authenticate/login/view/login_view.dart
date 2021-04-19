@@ -186,7 +186,7 @@ class LoginView extends StatelessWidget {
                   valueColor: AlwaysStoppedAnimation<Color>(context.colors.primaryVariant),
                 )
               : Text(
-                  LocaleKeys.login.locale,
+                  LocaleKeys.login_login.locale,
                   style: context.textTheme.headline5.copyWith(color: context.colors.primaryVariant),
                 ),
         ),
