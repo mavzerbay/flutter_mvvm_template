@@ -23,5 +23,16 @@
         "you_dont_have_account": "Hesabınız yok mu? ",
         "password_required": "Parola alanı zorunludur!",
         "email_required": "Geçersiz email !"
+    },
+    "home":{
+        "build":{
+            "tabbar":{
+                "tab1":"En Yeni",
+                "tab2":"Dekoratif",
+                "tab3":"Müzik",
+                "tab4":"Stil"
+            },
+            "subTitle":"Önerilen"
+        }
     }
 }

@@ -16,34 +16,42 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   ThemeData get theme => ThemeData(
         fontFamily: ApplicationConstants.FONT_FAMILY,
-        colorScheme: _appColorScheme(),
+        colorScheme: _appColorScheme,
         textTheme: _textTheme(),
+        appBarTheme: ThemeData.light().appBarTheme.copyWith(iconTheme: IconThemeData(color: Colors.black87)),
         scaffoldBackgroundColor: Color(0xfff1f3f8),
         floatingActionButtonTheme: ThemeData.light().floatingActionButtonTheme.copyWith(),
-        tabBarTheme: TabBarTheme(
-          labelPadding: paddingInsets.lowPaddingAll,
-        ),
+        tabBarTheme: tabBarTheme,
       );
 
-  TextTheme _textTheme() {
-    return TextTheme(
-      headline1: textThemeLight.headline1,
-      headline2: textThemeLight.headline2,
-      headline3: textThemeLight.headline3,
-      headline4: textThemeLight.headline4,
-      headline5: textThemeLight.headline5,
-      headline6: textThemeLight.headline6,
-      subtitle1: textThemeLight.subtitle1,
-      bodyText1: textThemeLight.bodyText1,
-      bodyText2: textThemeLight.bodyText2,
-      caption: textThemeLight.caption,
-      button: textThemeLight.button,
-      subtitle2: textThemeLight.subtitle2,
-      overline: textThemeLight.overline,
+  TabBarTheme get tabBarTheme {
+    return TabBarTheme(
+      labelPadding: paddingInsets.lowPaddingAll,
+      labelColor: _appColorScheme.onSecondary,
+      labelStyle: textThemeLight.headline6,
+      unselectedLabelColor: _appColorScheme.onSecondary.withOpacity(0.2),
     );
   }
 
-  ColorScheme _appColorScheme() {
+  TextTheme _textTheme() {
+    return ThemeData.light().textTheme.copyWith(
+          headline1: textThemeLight.headline1,
+          headline2: textThemeLight.headline2,
+          headline3: textThemeLight.headline3,
+          headline4: textThemeLight.headline4,
+          headline5: textThemeLight.headline5,
+          headline6: textThemeLight.headline6,
+          subtitle1: textThemeLight.subtitle1,
+          bodyText1: textThemeLight.bodyText1,
+          bodyText2: textThemeLight.bodyText2,
+          caption: textThemeLight.caption,
+          button: textThemeLight.button,
+          subtitle2: textThemeLight.subtitle2,
+          overline: textThemeLight.overline,
+        );
+  }
+
+  ColorScheme get _appColorScheme {
     return ColorScheme(
         primary: colorSchemeLight.primary,
         primaryVariant: colorSchemeLight.primaryVariant,
