@@ -10,7 +10,6 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'core/init/notifier/theme_notifier.dart';
-import 'view/authenticate/onboard/view/on_board_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

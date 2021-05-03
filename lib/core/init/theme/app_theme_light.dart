@@ -18,7 +18,10 @@ class AppThemeLight extends AppTheme with ILightTheme {
         fontFamily: ApplicationConstants.FONT_FAMILY,
         colorScheme: _appColorScheme,
         textTheme: _textTheme(),
-        appBarTheme: ThemeData.light().appBarTheme.copyWith(iconTheme: IconThemeData(color: Colors.black87)),
+        appBarTheme: ThemeData.light().appBarTheme.copyWith(
+              iconTheme: IconThemeData(color: Colors.black87),
+              brightness: Brightness.light,
+            ),
         scaffoldBackgroundColor: Color(0xfff1f3f8),
         floatingActionButtonTheme: ThemeData.light().floatingActionButtonTheme.copyWith(),
         tabBarTheme: tabBarTheme,

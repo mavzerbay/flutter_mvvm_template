@@ -10,8 +10,8 @@ class VexanaManager {
     return _instace;
   }
 
-  static const String _iosBaseUrl = 'https://reqres.in/api';
-  static const String _androidBaseUrl = 'https://reqres.in/api';
+  static const String _iosBaseUrl = 'https://reqres.in/api';//localhost:5001
+  static const String _androidBaseUrl = 'https://reqres.in/api';//10.0.2.2:5001
 
   VexanaManager._init();
 
