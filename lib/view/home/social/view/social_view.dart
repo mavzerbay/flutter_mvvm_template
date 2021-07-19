@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttermvvmtemplate/view/_widgets/animation/social_card_animation.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/button/base_text_button.dart';
@@ -101,9 +102,13 @@ class SocialView extends StatelessWidget {
       itemCount: viewModel.socialUserList.length,
       itemBuilder: (context, index) {
         viewModel.fetchAllUserLazy(index);
-        return SocialCard(
-          user: viewModel.socialUserList[index],
-          onPressed: () {},
+        return OpenContainerSocialWrapper(
+          socialUser: viewModel.socialUserList[index],
+
+          closedBuilder: (context, action) => SocialCard(
+            user: viewModel.socialUserList[index],
+            onPressed: action,
+          ),
         );
       },
     );

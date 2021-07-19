@@ -16,6 +16,7 @@ class SocialCard extends StatelessWidget {
       leading: CircleAvatar(
         backgroundImage: NetworkImage(user!.image!),
       ),
+      onTap: onPressed!,
       title: Text(user!.name!),
       subtitle: Text(user!.company!),
       trailing: BaseElevatedButton(
