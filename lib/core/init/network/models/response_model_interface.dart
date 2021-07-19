@@ -1,6 +1,6 @@
-import '../../../base/model/concrete/base_error.dart';
+import '../../../base/model/abstracts/base_error_interface.dart';
 
 abstract class IResponseModel<T> {
-  T data;
-  BaseError error;
+  T? data;
+  IErrorModel? error;
 }

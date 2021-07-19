@@ -4,10 +4,10 @@ import '../../../core/components/decoration/circle_decoration.dart';
 import '../../../core/extensions/context_extension.dart';
 
 class DecorationHelper {
-  BuildContext context;
+  BuildContext? context;
   DecorationHelper({
-    @required this.context,
+    this.context,
   });
 
-  Decoration get circleDecoration => CircleDecoration(color: context.colors.primary, radius: 3);
+  Decoration get circleDecoration => CircleDecoration(color: context!.colors.primary, radius: 3);
 }

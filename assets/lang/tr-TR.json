@@ -24,15 +24,23 @@
         "password_required": "Parola alanı zorunludur!",
         "email_required": "Geçersiz email !"
     },
-    "home":{
-        "build":{
-            "tabbar":{
-                "tab1":"En Yeni",
-                "tab2":"Dekoratif",
-                "tab3":"Müzik",
-                "tab4":"Stil"
+    "home": {
+        "build": {
+            "tabbar": {
+                "tab1": "En Yeni",
+                "tab2": "Dekoratif",
+                "tab3": "Müzik",
+                "tab4": "Stil"
             },
-            "subTitle":"Önerilen"
+            "subTitle": "Önerilen"
+        },
+        "social": {
+            "cancel": "İptal",
+            "next": "Sonraki",
+            "search": "Ara",
+            "findFriends": "Arkadaş ara",
+            "follow": "Takip Et",
+            "following": "Takip Ediliyor"
         }
     }
 }

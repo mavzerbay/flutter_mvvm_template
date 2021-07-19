@@ -15,6 +15,8 @@ class NavigationRoute {
 
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
+      case NavigationConstants.DEFAULT:
+        return normalNavigate(OnBoardView());
       case NavigationConstants.TEST_VIEW:
         return normalNavigate(TestsView());
       case NavigationConstants.ONBOARD_VIEW:

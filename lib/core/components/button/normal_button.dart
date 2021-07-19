@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../extensions/context_extension.dart';
 
 class NormalButton extends StatelessWidget {
-  final Widget child;
-  final VoidCallback onPressed;
+  final Widget? child;
+  final VoidCallback? onPressed;
 
   const NormalButton({
-    Key key,
+    Key? key,
     this.child,
     this.onPressed,
   }) : super(key: key);

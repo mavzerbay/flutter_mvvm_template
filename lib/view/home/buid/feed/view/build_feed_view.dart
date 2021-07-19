@@ -78,25 +78,25 @@ class BuildFeedView extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      leading: IconButton(
+        icon: Icon(
+          Icons.format_align_left,
+          size: context.size28,
+        ),
+        onPressed: () {},
+      ),
+      actions: [
+        IconButton(
           icon: Icon(
-            Icons.format_align_left,
+            Icons.search,
             size: context.size28,
           ),
           onPressed: () {},
         ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              size: context.size28,
-            ),
-            onPressed: () {},
-          ),
-        ],
-      );
+      ],
+    );
   }
 
   Widget buildStackFloaty(BuildContext context) {
@@ -143,7 +143,7 @@ class BuildFeedView extends StatelessWidget {
         ),
         Text(
           "hgfhfgdhfghfghdfh",
-          style: context.textTheme.headline5.copyWith(fontWeight: FontWeight.w600),
+          style: context.textTheme.headline5!.copyWith(fontWeight: FontWeight.w600),
         ),
         Text("Desc")
       ],

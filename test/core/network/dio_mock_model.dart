@@ -1,10 +1,10 @@
 import 'package:fluttermvvmtemplate/core/base/model/abstracts/base_model.dart';
 
 class PostModel extends BaseModel<PostModel> {
-  int userId;
-  int id;
-  String title;
-  String body;
+  int? userId;
+  int? id;
+  String? title;
+  String? body;
 
   PostModel({this.userId, this.id, this.title, this.body});
 

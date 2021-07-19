@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 
 import '../../constants/enums/locale_preferences_keys_enum.dart';
@@ -7,22 +6,22 @@ import 'core_dio.dart';
 import 'core_dio_interface.dart';
 
 class NetworkManager {
-  static NetworkManager _instance;
+  static NetworkManager? _instance;
 
-  static NetworkManager get instance {
-    if (_instance == null) _instance = NetworkManager._init();
+  static NetworkManager? get instance {
+    _instance ??= NetworkManager._init();
     return _instance;
   }
 
-  ICoreDio coreDio;
+  ICoreDio? coreDio;
 
   NetworkManager._init() {
     final baseOptions = BaseOptions(
-     // baseUrl: "https://jsonplaceholder.typicode.com/",
+      // baseUrl: "https://jsonplaceholder.typicode.com/",
       baseUrl: "https://reqres.in/api",
       headers: {"val": LocaleManager.instance.getStringValue(LocalePreferencesKeys.TOKEN)},
     );
-    
+
     coreDio = CoreDio(baseOptions);
   }
 }

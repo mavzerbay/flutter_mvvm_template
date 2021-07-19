@@ -18,7 +18,7 @@ class TestsView extends StatefulWidget {
 }
 
 class _TestsViewState extends BaseState<TestsView> {
-  TestViewModel viewModel;
+  late TestViewModel viewModel;
   @override
   Widget build(BuildContext context) {
     return BaseView<TestViewModel>(
@@ -55,9 +55,9 @@ class _TestsViewState extends BaseState<TestsView> {
       icon: Icon(Icons.change_history),
       onPressed: () {
         if (context.locale == LanguageManager.instance.enLocale) {
-          context.locale = LanguageManager.instance.trLocale;
+          context.setLocale(LanguageManager.instance.trLocale);
         } else {
-          context.locale = LanguageManager.instance.enLocale;
+          context.setLocale(LanguageManager.instance.enLocale);
         }
       },
     );
@@ -70,7 +70,7 @@ class _TestsViewState extends BaseState<TestsView> {
       child: Observer(
         builder: (context) => Text(
           viewModel.number.toString(),
-          style: context.textTheme.subtitle1.copyWith(fontSize: context.highValue),
+          style: context.textTheme.subtitle1!.copyWith(fontSize: context.highValue),
         ),
       ),
     );

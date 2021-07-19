@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/app/app_constants.dart';
 
-
 final TextSelectionThemeData _textSelectionThemeData = TextSelectionThemeData(
   cursorColor: Color(0xff4285f4),
   selectionColor: Color(0xff80deea),
@@ -438,10 +437,10 @@ final ThemeData cyanTheme = ThemeData(
     disabledInactiveTickMarkColor: null,
     thumbColor: null,
     disabledThumbColor: null,
-    thumbShape: null(),
+    thumbShape: null,
     overlayColor: null,
     valueIndicatorColor: null,
-    valueIndicatorShape: null(),
+    valueIndicatorShape: null,
     showValueIndicator: null,
     valueIndicatorTextStyle: TextStyle(
       color: Color(0xdd000000),

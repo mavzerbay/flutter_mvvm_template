@@ -15,10 +15,10 @@ class LoginViewModel = _LoginViewModelBase with _$LoginViewModel;
 abstract class _LoginViewModelBase with Store, BaseViewModel {
   GlobalKey<FormState> formKey = GlobalKey();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-  ILoginService loginService;
+  late ILoginService loginService;
 
-  TextEditingController emailTEC;
-  TextEditingController passwordTEC;
+  TextEditingController? emailTEC;
+  TextEditingController? passwordTEC;
 
   void setContext(BuildContext context) => this.context = context;
   void init() {
@@ -36,20 +36,23 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
   @action
   Future<void> fetchLoginService() async {
     isLoadingStateChange();
-    if (formKey.currentState.validate()) {
+    if (formKey.currentState!.validate()) {
       final response = await loginService.fetchUserControl(
-        LoginModel(email: emailTEC.text, password: passwordTEC.text),
+        LoginModel(email: emailTEC!.text, password: passwordTEC!.text),
       );
 
       if (response != null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(response.token),
-        ));
-        localeManager.setStringValue(LocalePreferencesKeys.TOKEN, response.token);
+        if (scaffoldKey.currentState != null)
+          ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
+            content: Text(response.token!),
+          ));
+
+        await localeManager.setStringValue(LocalePreferencesKeys.TOKEN, response.token!);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Login Error"),
-        ));
+        if (scaffoldKey.currentState != null)
+          ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
+            content: Text("Login Error"),
+          ));
       }
     }
     isLoadingStateChange();

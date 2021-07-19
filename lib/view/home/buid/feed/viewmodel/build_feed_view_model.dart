@@ -15,21 +15,21 @@ abstract class _BuildFeedViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.context = context;
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-  DecorationHelper helper;
-  IBuildFeedService feedService;
+  late DecorationHelper helper;
+  late IBuildFeedService feedService;
 
   @observable
-  List<HouseModel> houseModel = [];
+  List<HouseModel>? houseModel = [];
 
   @computed
-  HouseModel get sliderHouse => houseModel.first;
+  HouseModel get sliderHouse => houseModel!.first;
 
   @observable
   bool isLoading = false;
 
   void init() {
     helper = DecorationHelper(context: context);
-    feedService = BuildFeedService(vexanaManager.networkManager, scaffoldKey);
+    feedService = BuildFeedService(vexanaManager!.networkManager, scaffoldKey);
   }
 
   @action

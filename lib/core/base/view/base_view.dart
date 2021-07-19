@@ -5,13 +5,13 @@ class BaseView<T extends Store> extends StatefulWidget {
   final Widget Function(BuildContext context, T value) onPageBuilder; //lazım olabilir diye geriye sayfa contexti ve model döndürülür.
   final T viewModel;
   final Function(T model) onModelReady; // gelen modeli döndürmek için
-  final VoidCallback onDispose;
+  final VoidCallback? onDispose;
 
   const BaseView({
-    Key key,
-    @required this.viewModel,
-    @required this.onPageBuilder,
-    this.onModelReady,
+    Key? key,
+    required this.viewModel,
+    required this.onPageBuilder,
+    required this.onModelReady,
     this.onDispose,
   }) : super(key: key);
 
@@ -20,7 +20,7 @@ class BaseView<T extends Store> extends StatefulWidget {
 }
 
 class _BaseViewState<T extends Store> extends State<BaseView<T>> {
-  T model;
+  late T model;
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
   @override
   void dispose() {
     super.dispose();
-    if (widget.onDispose != null) widget.onDispose();
+    if (widget.onDispose != null) widget.onDispose!();
   }
 
   @override

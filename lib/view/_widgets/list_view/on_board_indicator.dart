@@ -6,9 +6,9 @@ class OnBoardIndicator extends StatelessWidget {
   final int itemCount;
   final int currentIndex;
   const OnBoardIndicator({
-    Key key,
-    @required this.itemCount,
-    @required this.currentIndex,
+    Key? key,
+    required this.itemCount,
+    required this.currentIndex,
   }) : super(key: key);
 
   @override

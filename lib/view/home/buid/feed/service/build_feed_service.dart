@@ -10,9 +10,9 @@ class BuildFeedService extends IBuildFeedService with ServiceHelper {
   BuildFeedService(INetworkManager manager, GlobalKey<ScaffoldState> key) : super(manager, key);
 
   @override
-  Future<List<HouseModel>> fetchUserHouseList() async {
+  Future<List<HouseModel>?> fetchUserHouseList() async {
     final response =
-        await manager.fetch<HouseModel, List<HouseModel>>(NetworkRoutes.BUILD_HOME.rawValue, parseModel: HouseModel(), method: RequestType.GET);
+        await manager.send<HouseModel, List<HouseModel>>(NetworkRoutes.BUILD_HOME.rawValue, parseModel: HouseModel(), method: RequestType.GET);
 
     showMessage(scaffoldKey, response.error);
     return response.data;

@@ -53,7 +53,7 @@ class LoginView extends StatelessWidget {
                           padding: EdgeInsets.only(left: 50, right: 50, bottom: 5),
                           child: TabBar(
                             labelStyle: context.textTheme.headline5,
-                            unselectedLabelStyle: context.textTheme.headline5.copyWith(
+                            unselectedLabelStyle: context.textTheme.headline5!.copyWith(
                               color: context.buttonColors.primary.withOpacity(.3),
                             ),
                             labelColor: context.buttonColors.primary,
@@ -118,7 +118,7 @@ class LoginView extends StatelessWidget {
       builder: (_) {
         return TextFormField(
           controller: viewModel.passwordTEC,
-          validator: (value) => value.isNotEmpty ? null : LocaleKeys.login_password_required.locale,
+          validator: (value) => value!.isNotEmpty ? null : LocaleKeys.login_password_required.locale,
           obscureText: !viewModel.isLockOpen,
           decoration: InputDecoration(
             labelText: LocaleKeys.login_password.locale,
@@ -144,7 +144,7 @@ class LoginView extends StatelessWidget {
     return TextFormField(
       controller: viewModel.emailTEC,
       keyboardType: TextInputType.emailAddress,
-      validator: (value) => value.isValidEmail,
+      validator: (value) => value!.isValidEmail,
       decoration: InputDecoration(
         labelText: LocaleKeys.login_email.locale,
         icon: buildContainerIconField(context, Icons.email),
@@ -187,7 +187,7 @@ class LoginView extends StatelessWidget {
                 )
               : Text(
                   LocaleKeys.login_login.locale,
-                  style: context.textTheme.headline5.copyWith(color: context.colors.primaryVariant),
+                  style: context.textTheme.headline5!.copyWith(color: context.colors.primaryVariant),
                 ),
         ),
       );

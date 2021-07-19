@@ -31,16 +31,16 @@ abstract class _TestViewModelBase with Store, BaseViewModel {
   }
 
   void changeTheme() {
-    Provider.of<ThemeNotifier>(context, listen: false).changeValue(AppThemes.DARK);
+    Provider.of<ThemeNotifier>(context!, listen: false).changeValue(AppThemes.DARK);
   }
 
   @action
   Future<void> getSampleRequest() async {
     isLoading = true;
-    final response = await coreDio.fetch<List<TestModel>, TestModel>("path", method: HttpTypes.GET, parseModel: TestModel());
+    final response = await coreDio!.send<List<TestModel>, TestModel>('x', type: HttpTypes.GET, parseModel: TestModel());
     if (response.data is List<TestModel>) {
       //print true
-    }else{
+    } else {
       //response.error;
     }
     isLoading = false;

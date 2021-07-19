@@ -5,37 +5,37 @@ part 'house_model.g.dart';
 
 @JsonSerializable()
 class HouseModel extends INetworkModel<HouseModel> {
-  String id;
-  String title;
-  String description;
-  String image;
-  UserHouse user;
-  int iV;
+  String? id;
+  String? title;
+  String? description;
+  String? image;
+  UserHouse? user;
+  int? iV;
 
   HouseModel({this.id, this.title, this.description, this.image, this.user, this.iV});
 
   @override
-  HouseModel fromJson(Map<String, Object> json) {
+  HouseModel fromJson(Map<String, Object?> json) {
     return _$HouseModelFromJson(json);
   }
 
   @override
-  Map<String, Object> toJson() {
+  Map<String, Object?> toJson() {
     return _$HouseModelToJson(this);
   }
 }
 
 @JsonSerializable()
 class UserHouse extends INetworkModel<UserHouse> {
-  String id;
-  String name;
-  String image;
-  String date;
+  String? id;
+  String? name;
+  String? image;
+  String? date;
 
   UserHouse({this.id, this.name, this.image, this.date});
 
   @override
-  UserHouse fromJson(Map<String, Object> json) {
+  UserHouse fromJson(Map<String, Object?> json) {
     return _$UserHouseFromJson(json);
   }
 
@@ -44,7 +44,7 @@ class UserHouse extends INetworkModel<UserHouse> {
   }
 
   @override
-  Map<String, Object> toJson() {
+  Map<String, Object?> toJson() {
     return _$UserHouseToJson(this);
   }
 }

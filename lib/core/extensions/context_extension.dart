@@ -93,7 +93,7 @@ extension ThemeExtension on BuildContext {
 
   ColorScheme get colors => theme.colorScheme;
 
-  ColorScheme get buttonColors => theme.buttonTheme.colorScheme;
+  ColorScheme get buttonColors => theme.buttonTheme.colorScheme!;
 }
 
 extension PaddingExtensionAll on BuildContext {

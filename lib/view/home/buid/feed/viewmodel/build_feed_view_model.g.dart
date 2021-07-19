@@ -9,7 +9,7 @@ part of 'build_feed_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$BuildFeedViewModel on _BuildFeedViewModelBase, Store {
-  Computed<HouseModel> _$sliderHouseComputed;
+  Computed<HouseModel>? _$sliderHouseComputed;
 
   @override
   HouseModel get sliderHouse =>
@@ -20,13 +20,13 @@ mixin _$BuildFeedViewModel on _BuildFeedViewModelBase, Store {
   final _$houseModelAtom = Atom(name: '_BuildFeedViewModelBase.houseModel');
 
   @override
-  List<HouseModel> get houseModel {
+  List<HouseModel>? get houseModel {
     _$houseModelAtom.reportRead();
     return super.houseModel;
   }
 
   @override
-  set houseModel(List<HouseModel> value) {
+  set houseModel(List<HouseModel>? value) {
     _$houseModelAtom.reportWrite(value, super.houseModel, () {
       super.houseModel = value;
     });

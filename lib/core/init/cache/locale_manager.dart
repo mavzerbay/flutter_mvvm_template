@@ -5,7 +5,7 @@ import '../../constants/enums/locale_preferences_keys_enum.dart';
 class LocaleManager {
   static final LocaleManager _instance = LocaleManager._init();
 
-  SharedPreferences _preferences;
+  SharedPreferences? _preferences;
   static LocaleManager get instance => _instance;
 
   LocaleManager._init() {
@@ -13,24 +13,30 @@ class LocaleManager {
       _preferences = value;
     });
   }
-  static Future preferencesInit() async {
+  static Future prefrencesInit() async {
     instance._preferences ??= await SharedPreferences.getInstance();
   }
 
   Future<void> clearAll() async {
-    await _preferences.clear();
+    await _preferences!.clear();
+  }
+
+  Future<void> clearAllSaveFirst() async {
+    if (_preferences != null) {
+      await _preferences!.clear();
+      await setBoolValue(LocalePreferencesKeys.IS_FIRST_APP, true);
+    }
   }
 
   Future<void> setStringValue(LocalePreferencesKeys key, String value) async {
-    await _preferences.setString(key.toString(), value);
+    await _preferences!.setString(key.toString(), value);
   }
 
   Future<void> setBoolValue(LocalePreferencesKeys key, bool value) async {
-    await _preferences.setBool(key.toString(), value);
+    await _preferences!.setBool(key.toString(), value);
   }
 
-  String getStringValue(LocalePreferencesKeys key) => _preferences.getString(key.toString()) ?? '';
+  String getStringValue(LocalePreferencesKeys key) => _preferences?.getString(key.toString()) ?? '';
 
-  bool getBoolValue(LocalePreferencesKeys key) => _preferences.getBool(key.toString()) ?? false;
-  
+  bool getBoolValue(LocalePreferencesKeys key) => _preferences!.getBool(key.toString()) ?? false;
 }

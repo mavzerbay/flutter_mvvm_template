@@ -24,15 +24,23 @@
         "password_required": "Password is required!",
         "email_required": "Invalid e-mail address!"
     },
-    "home":{
-        "build":{
-            "tabbar":{
-                "tab1":"Latest",
-                "tab2":"Decorative",
-                "tab3":"Music",
-                "tab4":"Style"
+    "home": {
+        "build": {
+            "tabbar": {
+                "tab1": "Latest",
+                "tab2": "Decorative",
+                "tab3": "Music",
+                "tab4": "Style"
             },
-            "subTitle":"Recommended"
+            "subTitle": "Recommended"
+        },
+        "social": {
+            "cancel": "Cancel",
+            "next": "Next",
+            "search": "Search",
+            "findFriends": "Find Friends",
+            "follow": "Follow",
+            "following": "Following"
         }
     }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermvvmtemplate/core/extensions/string_extension.dart';
+import '../../extensions/string_extension.dart';
 
 class LocaleText extends StatelessWidget {
   final String value;
 
   const LocaleText({
-    Key key,
-    @required this.value,
+    Key? key,
+    required this.value,
   }) : super(key: key);
 
   @override

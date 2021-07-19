@@ -12,86 +12,64 @@ import 'package:fluttermvvmtemplate/core/init/network/models/response_model.dart
 import 'package:fluttermvvmtemplate/core/init/network/models/response_model_interface.dart';
 
 class CoreDioMock with DioMixin implements ICoreDioFull, Dio {
+  @override
   final BaseOptions options;
 
   CoreDioMock(this.options) {
-    this.options = options;
-    this.interceptors.add(InterceptorsWrapper());
-    this.httpClientAdapter = DefaultHttpClientAdapter();
+    options = options;
+    interceptors.add(InterceptorsWrapper());
+    httpClientAdapter = DefaultHttpClientAdapter();
   }
-  @override
-  Future<IResponseModel<R>> fetch<R, T extends BaseModel>(
-    String path, {
-    HttpTypes method,
-    T parseModel,
-    data,
-    Map<String, Object> queryParameters,
-    void Function(int p1, int p2) onReceiveProgress,
-  }) async {
-    final response = await request(
-      path,
-      data: data,
-      queryParameters: queryParameters,
-      options: Options(method: method.rawValue),
-    );
+  Future<IResponseModel<R>> send<R, T extends BaseModel>(String path,
+      {HttpTypes? type, T? parseModel, data, Map<String, Object>? queryParameters, void Function(int p1, int p2)? onReceiveProgress}) async {
+    final Response<dynamic> response = await request(path, data: data, options: Options(method: type!.rawValue));
 
     switch (response.statusCode) {
       case HttpStatus.ok:
+      case HttpStatus.accepted:
         final model = _responseParser<R, T>(parseModel, response.data);
         return ResponseModel<R>(data: model);
       default:
-        return ResponseModel<R>(error: BaseError("error message"));
+        return ResponseModel(error: BaseError('message'));
     }
   }
 
-  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(
-    String path, {
-    HttpTypes method,
-    T parseModel,
-    data,
-    Map<String, Object> queryParameters,
-    void Function(int p1, int p2) onReceiveProgress,
-  }) async {
-    String dumyJson = """
-    [
+  @override
+  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
+      {HttpTypes? type, T? parseModel, data, Map<String, Object>? queryParameters, void Function(int p1, int p2)? onReceiveProgress}) async {
+    final dumyJson = '''[
   {
     "userId": 1,
     "id": 1,
     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit nsuscipit recusandae consequuntur expedita et cum nreprehenderit molestiae ut ut quas totam nnostrum rerum est autem sunt rem eveniet architecto"
+    "body": "quia et suscipit suscipit recusandae consequuntur expedita et cumnreprehenderit molestiae ut ut quas totamnostrum rerum est autem sunt rem eveniet architecto"
   },
   {
     "userId": 1,
     "id": 2,
     "title": "qui est esse",
-    "body": "est rerum tempore vitae nsequi sint nihil reprehenderit dolor beatae ea dolores neque nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis nqui aperiam non debitis possimus qui neque nisi nulla"
-  }
-  ]
-    """;
-
+    "body": "est rerum tempore vitaensequi sint nihil reprehenderit dolor beatae ea dolores nequenfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendisnqui aperiam non debitis possimus qui neque nisi nulla"
+  }]''';
     final response = jsonDecode(dumyJson);
-
     final model = _responseParser<R, T>(parseModel, response);
     return ResponseModel<R>(data: model);
   }
 
-  R _responseParser<R, T>(BaseModel model, dynamic data) {
+  R? _responseParser<R, T>(BaseModel? model, dynamic data) {
     if (data is List) {
-      return data.map((e) => model.fromJson(e)).toList().cast<T>() as R;
+      return data.map((e) => model!.fromJson(e)).toList().cast<T>() as R;
     } else if (data is Map) {
-      return model.fromJson(data) as R;
+      return model!.fromJson(data as Map<String, Object>) as R;
     }
-    return data as R;
+    return data as R?;
   }
 }
 
 abstract class ICoreDioFull extends ICoreDio {
-  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(
-    String path, {
-    HttpTypes method,
-    T parseModel,
-    data,
-    Map<String, Object> queryParameters,
-    void Function(int p1, int p2) onReceiveProgress,
-  });
+  Future<IResponseModel<R>> fetchNoNetwork<R, T extends BaseModel>(String path,
+      {required HttpTypes type,
+      required T parseModel,
+      dynamic data,
+      Map<String, Object>? queryParameters,
+      void Function(int, int)? onReceiveProgress});
 }
